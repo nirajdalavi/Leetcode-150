@@ -1,3 +1,4 @@
+#max_sub_array
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
         #maximising max_sum is the greed 
