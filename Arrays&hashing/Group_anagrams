@@ -1,0 +1,13 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        ana_map={}
+
+        for word in strs:
+            map_key = tuple(sorted(word))
+            if map_key not in ana_map:
+                ana_map[map_key]=[word]
+            else:
+                ana_map[map_key].append(word)
+        return list(ana_map.values())
+    
+            
