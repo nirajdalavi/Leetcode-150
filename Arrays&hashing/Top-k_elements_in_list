@@ -1,0 +1,15 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count_map = {}
+
+        for i in nums:
+            if i not in count_map:
+                count_map[i]=1
+            else:
+                count_map[i]+=1
+            
+        sorted_items= sorted(count_map.keys(), key = lambda x:count_map[x], reverse=True)
+        l=[]
+        for i in range(k):
+            l.append(sorted_items[i])
+        return l
