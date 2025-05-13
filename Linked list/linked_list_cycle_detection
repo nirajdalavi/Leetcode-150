@@ -4,6 +4,8 @@
 #         self.val = val
 #         self.next = next
 
+
+#cycle detection
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         slow = fast = head
