@@ -1,0 +1,26 @@
+from collections import Counter
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        s1len = len(s1)
+        s2len = len(s2)
+        s1dict = Counter(s1)
+        s2_window = Counter(s2[:s1len])
+
+        if s1len > s2len:
+            return False
+        #check if it matches
+        if s1dict == s2_window:
+            return True
+        #else slide the window
+        for idx in range(s1len, s2len):
+            char_out = s2[idx - s1len]
+            s2_window[char_out]-=1
+            if s2_window[char_out] == 0:
+                del s2_window[char_out]
+            
+            char_in = s2[idx]
+            s2_window[char_in]+=1
+
+            if s1dict == s2_window:
+                return True
+        return False
