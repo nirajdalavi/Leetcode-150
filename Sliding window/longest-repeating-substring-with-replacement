@@ -1,0 +1,19 @@
+from collections import defaultdict
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        left=0
+        max_len=0
+        max_freq=0
+        count=defaultdict(int)
+        #count max freq
+        for right in range(len(s)):
+            count[s[right]]+=1
+            max_freq = max(max_freq, count[s[right]])
+                #this calculates the number of replacements needed and if
+                #they are more than k, if they are, slide the window
+            if (right-left+1)-max_freq > k:
+                count[s[left]]-=1
+                left+=1
+
+            max_len = max(max_len, right-left+1)
+        return max_len
